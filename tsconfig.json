@@ -26,6 +26,7 @@
     ],
     "declaration": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "useDefineForClassFields": false,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
