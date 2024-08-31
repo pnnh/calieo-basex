@@ -3,6 +3,7 @@ import http from "http";
 import {serverConfig} from "@/services/server/config";
 import cors from 'cors'
 import {Request, Response} from "express";
+import forceServerAppToString from "@/server";
 
 const workerPort = serverConfig.PORT;
 
@@ -30,7 +31,12 @@ function runMain() {
     server.use('/build', express.static('build'))
 
 
-    server.get("/app", async (req, res) => {
+    server.get("/", async (req, res) => {
+        if (req.query.force) {
+            const html = await forceServerAppToString(req.url);
+            res.send(html);
+            return
+        }
         let scriptUrl = `${process.cwd()}/build/server.mjs` //`${serverConfig.SELF_URL}/build/server.mjs`;
         if (process.env.NODE_ENV === 'development') {
             scriptUrl = scriptUrl += `?t=${Date.now()}`;
@@ -39,6 +45,11 @@ function runMain() {
         let html = await serverAppToString.default(req.url);
         res.send(html);
     });
+
+    if (process.env.NODE_ENV === 'development') {
+
+        server.use('/src', express.static('src'))
+    }
 
     server.all("*", (req, res) => {
         res.json({code: 200});

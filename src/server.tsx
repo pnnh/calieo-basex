@@ -1,7 +1,8 @@
-import * as React from "react";
-import {Route, Routes} from "react-router";
-import ReactDOMServer from "react-dom/server";
-import {StaticRouter} from "react-router-dom/server";
+// import * as React from "react";
+// import {Route, Routes} from "react-router";
+// import ReactDOMServer from "react-dom/server";
+// import {StaticRouter} from "react-router-dom/server";
+import {CBIndexServer} from "@/components/server/home";
 
 // export class ServerIndex {
 //     render() {
@@ -37,30 +38,78 @@ import {StaticRouter} from "react-router-dom/server";
 //         return renderToString(this.render())
 //     }
 // }
-export function ServerIndex() {
-    return (
-        <html>
-        <head>
-            <title>Server Rendered App</title>
-        </head>
-        <body>
-        <Routes>
-            <Route path="/" element={<div>Home8</div>}/>
-            <Route path="/about" element={<div>About</div>}/>
-        </Routes>
-        <div is="word-count"></div>
-        <calieo-button/>
-        <script type={'module'} src={'/build/index.mjs'}></script>
-        </body>
-        </html>
-    );
-}
+// export function ServerIndex() {
+//     return (
+//         <html>
+//         <head>
+//             <title>Server Rendered App</title>
+//             <style type={'text/css'}>
+//                 {`
+//                      html, body {
+//                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+//                        padding: 0 !important;
+//                        margin: 0 !important;
+//                        font-size: 16px;
+//                        line-height: 1.5;
+//                        color: #333;
+//                        background-color: #f8f9fa;
+//                        overflow: hidden !important;
+//                      }
+//                 `}
+//             </style>
+//         </head>
+//         <body>
+//         <Routes>
+//             <Route path="/" element={<div>Home8</div>}/>
+//             <Route path="/about" element={<div>About</div>}/>
+//         </Routes>
+//         <div is="word-count"></div>
+//         <calieo-button/>
+//         <script type={'module'} src={'/build/index.mjs'}></script>
+//         </body>
+//         </html>
+//     );
+// }
+//
+// export function ServerIndex2() {
+//     return (
+//         <html>
+//         <head>
+//             <title>Server Rendered App</title>
+//             <style type={'text/css'}>
+//                 {`
+//                      html, body {
+//                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+//                        padding: 0 !important;
+//                        margin: 0 !important;
+//                        font-size: 16px;
+//                        line-height: 1.5;
+//                        color: #333;
+//                        background-color: #f8f9fa;
+//                        overflow: hidden !important;
+//                      }
+//                 `}
+//             </style>
+//         </head>
+//         <body>
+//         <Routes>
+//             <Route path="/" element={<div>Home8</div>}/>
+//             <Route path="/about" element={<div>About</div>}/>
+//         </Routes>
+//         <div is="word-count"></div>
+//         <calieo-button/>
+//         <script type={'module'} src={'/build/index.mjs'}></script>
+//         </body>
+//         </html>
+//     );
+// }
 
 export default async function serverAppToString(url: string) {
-    let html = ReactDOMServer.renderToString(
-        <StaticRouter location={url} basename={'/app'}>
-            <ServerIndex/>
-        </StaticRouter>
-    );
+    let html: string = '<html><body></body></html>'
+
+    const homeComponent = new CBIndexServer();
+
+    html = await homeComponent.renderToString();
+
     return "<!DOCTYPE html>" + html;
 }
