@@ -1,6 +1,12 @@
-export function CAComponent(targetClass: any) {
-    console.log('CAComponent')
-    customElements.define("calieo-button", targetClass);
+export function CAComponent(str: string) {
+    console.log(`评估 @d(): ${str}`);
+    return (
+        value: any,
+    ) => {
+
+        customElements.define(`calieo-${str}`, value);
+        console.log(`应用 @d(): ${str}`);
+    }
 }
 
 export function html(text: TemplateStringsArray, ...values: any[]) {

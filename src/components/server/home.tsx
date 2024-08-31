@@ -1,5 +1,6 @@
 import {html} from "@/components/component";
-import {renderCButtonCommon} from "@/components/common/button";
+import {CButtonServer,} from "@/components/server/button";
+import {CBInputServer} from "@/components/server/input";
 
 export class CBIndexServer {
     async renderToString() {
@@ -8,7 +9,6 @@ export class CBIndexServer {
             <head>
                 <title>Server Rendered App</title>
                 <style>
-
                     html, body {
                         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
                         padding: 0 !important;
@@ -19,24 +19,20 @@ export class CBIndexServer {
                         background-color: #f8f9fa;
                         overflow: hidden !important;
                     }
-
                 </style>
             </head>
             <body>
-            <!--            <Routes>-->
-            <!--                <Route path="/" element={<div>Home8</div>}/>-->
-            <!--                    <Route path="/about" element={<div>About</div>}/>-->
-            <!--            </Routes>-->
-            <!--            <div is="word-count"></div>-->
-            ${renderCButtonCommon()}
+            ${CButtonServer.new().setText('点击一下')}
+
+            <div>
+                ${CBInputServer.new({multiline: true})}
+                交换
+                ${CBInputServer.new({multiline: false})}
+            </div>
+
             <script type='module' src='/build/index.mjs'></script>
             </body>
             </html>`;
-        // const myServerTemplate = (name: string) => html`<p>Hello ${name}</p>`;
-        // const renderResult = render(myServerTemplate('world'));
-        // // const reader=new RenderResultReadable(renderResult);
-        // const contents = await collectResult(renderResult);
-        // return contents
         return buttonHtml
     }
 }

@@ -44,7 +44,7 @@ const customTypescriptConfig = {
         'prefer-object-spread': 'error',
         semi: "off",
         "prefer-const": "error",
-        'no-unused-vars': 'off',
+        // 'no-unused-vars': 'off',
         'no-trailing-spaces': 'off',
         'object-curly-spacing': 'off',
         'arrow-spacing': 'off',
@@ -61,13 +61,13 @@ const customTypescriptConfig = {
         'object-shorthand': 'off',
         quotes: 'off',
         'object-curly-newline': 'off',
-        '@typescript-eslint/no-unused-vars': [
-            'error',
-            {
-                ignoreRestSiblings: true,
-                args: 'none',
-            },
-        ],
+        // '@typescript-eslint/no-unused-vars': [
+        //     'error',
+        //     {
+        //         ignoreRestSiblings: true,
+        //         args: 'none',
+        //     },
+        // ],
     },
 }
 

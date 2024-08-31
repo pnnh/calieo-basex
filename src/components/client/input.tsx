@@ -1,7 +1,7 @@
 import {CAComponent} from "@/components/component";
 
-@CAComponent('button')
-export class CBButton extends HTMLElement {
+@CAComponent('input')
+export class CBInput extends HTMLElement {
     #shadowRoot: ShadowRoot;
 
     constructor() {
