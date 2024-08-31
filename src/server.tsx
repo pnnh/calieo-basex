@@ -1,7 +1,3 @@
-// import * as React from "react";
-// import {Route, Routes} from "react-router";
-// import ReactDOMServer from "react-dom/server";
-// import {StaticRouter} from "react-router-dom/server";
 import {CBIndexServer2} from "@/components/server/home";
 import JSX, {React} from '@/components/jsxFactory';
 

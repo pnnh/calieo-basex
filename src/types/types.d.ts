@@ -17,7 +17,7 @@ declare global {
 
         // IntrinsicElementMap grabs all the standard HTML tags in the TS DOM lib.
         interface IntrinsicElements extends IntrinsicElementMap {
-            'calieo-button': CalieoButtonAttributes;
+            'calieo-button': {};
             'calieo-input': {};
         }
 
@@ -36,9 +36,9 @@ declare global {
     }
 }
 
-interface CalieoButtonAttributes extends preact.JSX.HTMLAttributes<HTMLElement> {
-    placement?: string;
-}
+// interface CalieoButtonAttributes extends preact.JSX.HTMLAttributes<HTMLElement> {
+//     placement?: string;
+// }
 
 // /// <reference lib="DOM" />
 // declare module JSX {

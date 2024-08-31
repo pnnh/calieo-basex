@@ -1,2 +1,2 @@
-import './components/client/button'
-import './components/client/input'
+import './components/common/button'
+import './components/common/input'

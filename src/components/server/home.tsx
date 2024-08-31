@@ -1,6 +1,6 @@
-import {CBInputServer2} from "@/components/server/input";
 import JSX, {React} from '@/components/jsxFactory';
 import {CButtonCommon2} from "@/components/common/button";
+import {CBInputCommon2} from "@/components/common/input";
 
 export function CBIndexServer2() {
     return <html>
@@ -20,7 +20,7 @@ export function CBIndexServer2() {
         </style>
     </head>
     <body>
-    <CBInputServer2 text={'点击一下2'}/>
+    <CBInputCommon2 text={'点击一下2'}/>
     <CButtonCommon2 text={'按钮'}/>
 
     <script type='module' src='/build/index.mjs'></script>
