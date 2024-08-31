@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
+    "module": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "outDir": "dist",
+    "outDir": ".",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react-jsx",
@@ -42,11 +42,7 @@
         "node_modules/*"
       ]
     },
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
+    "plugins": []
   },
   "include": [
     "**/*.ts",

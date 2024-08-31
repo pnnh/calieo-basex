@@ -1,3 +1,6 @@
-.vite
 node_modules/
 .idea/
+build/
+dist/
+.rollup.cache/
+tsconfig.tsbuildinfo
