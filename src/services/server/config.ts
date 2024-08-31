@@ -8,13 +8,14 @@ if (result.error) {
 }
 
 function parseConfig(): IAppConfig {
-    let port:number = parseInt(process.env.PORT ?? '')
-    if (isNaN(port)){
+    let port: number = parseInt(process.env.PORT ?? '')
+    if (isNaN(port)) {
         port = 8004
     }
     const config = {
         ENV: process.env.NODE_ENV ?? 'development',
-        PORT: port
+        PORT: port,
+        SELF_URL: process.env.SELF_URL ?? 'http://localhost:8004'
     }
     if (!config.ENV) {
         throw new Error('ENV is required')

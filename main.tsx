@@ -3,7 +3,6 @@ import http from "http";
 import {serverConfig} from "@/services/server/config";
 import cors from 'cors'
 import {Request, Response} from "express";
-import {HomeComponent} from "@/server";
 
 const workerPort = serverConfig.PORT;
 
@@ -23,12 +22,23 @@ function runMain() {
 
     server.use(errorHandler)
 
-    server.get('/', (req, res) => {
-        const component = new HomeComponent()
-        const respText = component.renderToString()
-        res.send(respText)
-    })
+    // server.get('/', (req, res) => {
+    //     const component = new ServerIndex()
+    //     const respText = component.renderToString()
+    //     res.send(respText)
+    // })
     server.use('/build', express.static('build'))
+
+
+    server.get("/app", async (req, res) => {
+        let scriptUrl = `${process.cwd()}/build/server.mjs` //`${serverConfig.SELF_URL}/build/server.mjs`;
+        if (process.env.NODE_ENV === 'development') {
+            scriptUrl = scriptUrl += `?t=${Date.now()}`;
+        }
+        const serverAppToString = await import(scriptUrl);
+        let html = await serverAppToString.default(req.url);
+        res.send(html);
+    });
 
     server.all("*", (req, res) => {
         res.json({code: 200});

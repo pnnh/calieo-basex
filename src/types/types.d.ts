@@ -8,4 +8,14 @@ declare global {
             getAppConfig: () => Promise<IAppConfig>
         }
     }
+
+    namespace JSX {
+        interface IntrinsicElements {
+            'calieo-button': CalieoButtonAttributes;
+        }
+    }
+}
+
+interface CalieoButtonAttributes extends preact.JSX.HTMLAttributes<HTMLElement> {
+    placement?: string;
 }

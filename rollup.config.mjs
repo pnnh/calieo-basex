@@ -5,10 +5,29 @@ import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
 
 /** @type {import('rollup').RollupOptions} */
-const serverConfig = {
+const mainConfig = {
     input: 'main.tsx',
     output: {
         file: 'build/main.mjs',
+        format: 'esm',
+        sourcemap: true
+    },
+    external: [],
+    plugins: [typescript({
+        outputToFilesystem: true
+    }),
+        commonjs(),
+        json(),
+        nodeResolve({
+            preferBuiltins: true
+        })]
+}
+
+/** @type {import('rollup').RollupOptions} */
+const serverConfig = {
+    input: 'src/server.tsx',
+    output: {
+        file: 'build/server.mjs',
         format: 'esm',
         sourcemap: true
     },
@@ -48,4 +67,4 @@ const clientConfig = {
         })]
 }
 
-export default [serverConfig, clientConfig]
+export default [mainConfig, serverConfig, clientConfig]
