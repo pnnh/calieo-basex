@@ -3,6 +3,7 @@
 // import ReactDOMServer from "react-dom/server";
 // import {StaticRouter} from "react-router-dom/server";
 import {CBIndexServer} from "@/components/server/home";
+import JSX, {React} from '@/components/jsxFactory';
 
 // export class ServerIndex {
 //     render() {
@@ -105,11 +106,10 @@ import {CBIndexServer} from "@/components/server/home";
 // }
 
 export default async function serverAppToString(url: string) {
-    let html: string = '<html><body></body></html>'
+    // let html: string = '<html><body></body></html>'
 
     const homeComponent = new CBIndexServer();
+    const htmlComponent = await homeComponent.renderToString();
 
-    html = await homeComponent.renderToString();
-
-    return "<!DOCTYPE html>" + html;
+    return "<!DOCTYPE html>" + htmlComponent.toString();
 }

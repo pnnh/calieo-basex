@@ -11,7 +11,10 @@
     "outDir": ".",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
+    "reactNamespace": "JSX",
+    //    "jsxFactory": "jsx",
+    //    "jsxFragmentFactory": "jsxFragment",
     "types": [
       "node"
     ],
@@ -38,10 +41,10 @@
     "paths": {
       "@/*": [
         "src/*"
-      ],
-//      "~/*": [
-//        "node_modules/*"
-//      ]
+      ]
+      //      "~/*": [
+      //        "node_modules/*"
+      //      ]
     },
     "plugins": []
   },
