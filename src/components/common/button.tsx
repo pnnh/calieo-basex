@@ -1,29 +1,17 @@
-import {html} from "@/components/component";
+import {css, html} from "@/components/component";
+import JSX, {React} from '@/components/jsxFactory';
 
+export function CButtonCommon2({text}: { text: string }) {
+    return <calieo-button>
+        <style>
+            {css`
 
-export class CButtonCommon {
-    #text: string = 'Click';
-
-    static new() {
-        return new CButtonCommon()
-    }
-
-    public setText(text: string): CButtonCommon {
-        this.#text = text
-        return this;
-    }
-
-    public toString = (): string => {
-        const buttonHtml = html`
-            <calieo-button>
-                <style>
-                    .blue-button {
-                        color: white;
-                        background-color: blue;
-                    }
-                </style>
-                <button id="blueButton" class="blue-button">${this.#text}</button>
-            </calieo-button>`
-        return buttonHtml
-    }
+                .blue-button {
+                    color: white;
+                    background-color: blue;
+                }
+            `}
+        </style>
+        <button id="blueButton" class="blue-button">{text}</button>
+    </calieo-button>
 }
