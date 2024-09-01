@@ -1,15 +1,13 @@
-import {CBComponent} from "@/components/common/input";
-
-type CBComponentFactory2 = (props: any) => CBComponent
+import {BCComponent} from "@/components/component";
 
 export const JSX = {
-    createElement(name: string | CBComponentFactory2, props: { [id: string]: string }, ...content: string[]) {
+    createElement(name: string | BCComponent, props: { [id: string]: string }, ...content: string[]) {
         props = props || {};
         const typeName = (typeof name);
         if (typeName === "function") {
-            const factory = (name as CBComponentFactory2);
-            const instance = factory(props);
-            return instance.toString();
+            const factory = (name as BCComponent);
+            const instance = new factory(props);
+            return instance.renderToString();
         }
         console.log('createElement', name, typeName);
         const propsstr = Object.keys(props)

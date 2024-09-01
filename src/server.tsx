@@ -1,4 +1,4 @@
-import {CBIndexServer2} from "@/components/server/home";
+import {CBHomeServer} from "@/components/server/home";
 import JSX, {React} from '@/components/jsxFactory';
 
 export default async function serverAppToString(url: string) {
@@ -8,6 +8,6 @@ export default async function serverAppToString(url: string) {
     // const htmlComponent = await homeComponent.renderToString();
     //
     // return "<!DOCTYPE html>" + htmlComponent.toString();
-    const homeComponent = <CBIndexServer2/>
+    const homeComponent = <CBHomeServer/>
     return "<!DOCTYPE html>" + homeComponent.toString();
 }

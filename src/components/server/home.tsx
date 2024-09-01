@@ -1,12 +1,14 @@
 import JSX, {React} from '@/components/jsxFactory';
-import {CButtonCommon2} from "@/components/common/button";
-import {CBInputCommon2} from "@/components/common/input";
+import {CBButtonServer} from './button';
+import {CBHomeCommon} from "@/components/common/home";
 
-export function CBIndexServer2() {
-    return <html>
-    <head>
-        <title>Server Rendered App</title>
-        <style>{`
+export class CBHomeServer implements CBHomeCommon {
+
+    renderToString() {
+        return <html>
+        <head>
+            <title>Server Rendered App</title>
+            <style>{`
                 html, body {
                 font - family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
                 padding: 0 !important;
@@ -17,13 +19,15 @@ export function CBIndexServer2() {
                 background-color: #f8f9fa;
                 overflow: hidden !important;
             }`}
-        </style>
-    </head>
-    <body>
-    <CBInputCommon2 text={'点击一下2'}/>
-    <CButtonCommon2 text={'按钮'}/>
+            </style>
+        </head>
+        <body>
+        {/*<CBInput id={'inputText'} text={'输入内容'}/>*/}
+        <CBButtonServer id={'btnEncode'} text={'编码'}/>
+        {/*<CBInput id={'inputResult'} text={'结果'} multiline={true}/>*/}
 
-    <script type='module' src='/build/index.mjs'></script>
-    </body>
-    </html>
+        <script type='module' src='/build/index.mjs'></script>
+        </body>
+        </html>
+    }
 }

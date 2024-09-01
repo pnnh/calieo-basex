@@ -9,6 +9,12 @@
 //     }
 // }
 
+export interface BCComponent {
+    new(props: { [id: string]: string }): BCComponent;
+
+    renderToString(): string;
+}
+
 export function html(text: TemplateStringsArray, ...values: any[]) {
     let str = '';
     text.forEach((string, i) => {
