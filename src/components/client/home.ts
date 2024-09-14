@@ -1,4 +1,5 @@
-import {CBInputElement} from "@/components/client/input";
+import {CBButtonElement} from "./button";
+
 
 export class CBHomeElement extends HTMLElement {
     #shadowRoot: ShadowRoot;
@@ -11,6 +12,9 @@ export class CBHomeElement extends HTMLElement {
     connectedCallback() {
         const shadow2 = this.#shadowRoot;
 
+        const button = new CBButtonElement();
+        button.setText = 'Click Hello';
+        shadow2.appendChild(button);
     }
 }
 

@@ -1,4 +1,5 @@
-import {PSChannelModel} from "@/models/channel";
+import {PSChannelModel} from "./channel";
+
 
 export interface PSArticleModel {
     uid: string

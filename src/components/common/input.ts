@@ -1,15 +1,5 @@
-import JSX, {React} from '@/components/jsxFactory';
-import {css} from "@/components/component";
+import {html} from "../style";
 
-export interface CBInputProxy {
-    getText(): string
-
-    setText(text: string): void
-}
-
-export interface CBComponent {
-    toString: () => string
-}
 
 export function CBInput({
                             id,
@@ -21,14 +11,18 @@ export function CBInput({
     text: string, placeholder?: string,
     multiline?: boolean
 }) {
-    return <calieo-input>
-        <style>{css`
+    return html`
+        <calieo-input>
+            <style>{
             textarea, input {
                 color: blue;
                 border: none;
-            }`}
-        </style>
-        {multiline ? <textarea placeholder={placeholder}>{text}</textarea> :
+            }
+
+            }
+            </style>
+            {multiline ? <textarea placeholder={placeholder}>{text}</textarea> :
             <input type="text" value={text} placeholder={placeholder}/>}
-    </calieo-input>
+        </calieo-input>
+    `
 }

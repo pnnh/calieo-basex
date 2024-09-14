@@ -11,10 +11,6 @@
     "outDir": ".",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "react",
-    "reactNamespace": "JSX",
-    //    "jsxFactory": "jsx",
-    //    "jsxFragmentFactory": "jsxFragment",
     "types": [
       "node"
     ],
@@ -42,15 +38,11 @@
       "@/*": [
         "src/*"
       ]
-      //      "~/*": [
-      //        "node_modules/*"
-      //      ]
     },
     "plugins": []
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules"
