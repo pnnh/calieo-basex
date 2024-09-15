@@ -1,6 +1,6 @@
 import './components/client/button'
-import './components/client/home'
 import './components/client/input'
+import './components/client/home'
 
 const root = document.getElementById('root')
 if (root) {

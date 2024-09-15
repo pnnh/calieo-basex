@@ -1,10 +1,20 @@
-export class CBButtonElement extends HTMLElement {
+import {getComponentValue, IMail, IMailbox, registerComponent} from "@/components/client/postoffice";
+
+export class CBButtonElement extends HTMLElement implements IMailbox {
     #shadowRoot: ShadowRoot;
     #text: string = 'click';
 
     constructor() {
         super();
         this.#shadowRoot = this.attachShadow({mode: "closed"});
+        const name = this.getAttribute('name');
+        if (name) {
+            registerComponent(name, this);
+        }
+    }
+
+    readSync(mail: IMail): unknown {
+        throw new Error("Method not implemented.");
     }
 
     set setText(text: string) {
@@ -19,6 +29,8 @@ export class CBButtonElement extends HTMLElement {
         button.textContent = shadow2.host.innerHTML || this.#text;
         button.onclick = () => {
             console.log('click', this.#text)
+            const inputValue = getComponentValue<string>('xxx')
+            console.log('inputValue', inputValue)
         }
         shadow2.appendChild(button)
     }

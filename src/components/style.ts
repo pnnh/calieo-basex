@@ -1,10 +1,5 @@
 import {stringToMd5} from "@pnnh/atom";
 
-export function GlobalStyleTag() {
-    const rawStyle = styleGroup.renderToString();
-    const outputStyle = rawStyle.replace(/\n/g, '').replace(/\s+/g, ' ');
-    return html`${outputStyle}`
-}
 
 export class StyleObject {
     #styleName: string = '';
@@ -27,17 +22,18 @@ export class StyleObject {
     }
 }
 
-class StyleGroup {
+export class StyleGroup {
     styles: { [key: string]: StyleObject }[] = [];
 
-    create(styles: { [key: string]: StyleObject }) {
-        this.styles.push(styles);
+    static create(styles: { [key: string]: StyleObject }) {
+        const styleGroup = new StyleGroup();
+        styleGroup.styles.push(styles);
         for (const key in styles) {
             const styleText = styles[key].styleText;
             const suffix = stringToMd5(styleText).slice(0, 8);
             styles[key].setClassName = `pls-${key}-${suffix}`;
         }
-        return styles
+        return {styles, styleGroup}
     }
 
     renderToString() {
@@ -49,9 +45,14 @@ class StyleGroup {
         })
         return str;
     }
-}
 
-export const styleGroup = new StyleGroup();
+    renderToTag() {
+        const rawStyle = this.renderToString();
+        const outputStyle = rawStyle.replace(/\n/g, '').replace(/\s+/g, ' ');
+        return html`
+            <style>${outputStyle}</style>`
+    }
+}
 
 export function html(text: TemplateStringsArray, ...values: any[]) {
     let str = '';
