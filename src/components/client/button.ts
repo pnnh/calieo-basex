@@ -1,4 +1,5 @@
 import {getComponentValue, IMail, IMailbox, registerComponent, setComponentValue} from "@/components/client/postoffice";
+import {encodeBase64String} from "@pnnh/atom";
 
 export class CBButtonElement extends HTMLElement implements IMailbox {
     #shadowRoot: ShadowRoot;
@@ -31,7 +32,10 @@ export class CBButtonElement extends HTMLElement implements IMailbox {
             console.log('click', this.#text)
             const inputValue = getComponentValue<string>('xxx')
             console.log('inputValue', inputValue)
-            setComponentValue('zzz', inputValue)
+            if (inputValue) {
+                const base64Encoded = encodeBase64String(inputValue)
+                setComponentValue('zzz', base64Encoded)
+            }
         }
         shadow2.appendChild(button)
     }

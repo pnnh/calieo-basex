@@ -3,38 +3,17 @@ import commonjs from '@rollup/plugin-commonjs';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
-// import {createFilter} from '@rollup/pluginutils'
-//
-// function assign(target, source) {
-//     Object.keys(source).forEach((key) => {
-//         target[key] = source[key]
-//     })
-//     return target
-// }
-
-// const DEFAULT_HEADER = '// This file is generated automatically by rollup-plugin-add-import'
 
 const importPlugin = () => {
-    // opts = assign({}, opts || {})
-    // if (!opts.include) {
-    //     throw Error('include option should be specified')
-    // }
-    // let filter = createFilter(opts.include, opts.exclude)
-    // let header = opts.header !== undefined ? opts.header : DEFAULT_HEADER
-
     return {
         name: 'add-import',
 
         transform(code) {
             const testRegex = /customElements\.define(.*)/g
-            // if (code.indexOf('customElements.define') > 0) {
-            //     let a = 1;
-            // }
             if (testRegex.test(code)) {
                 code = code.replace(testRegex, '//customElements.define($1)')
 
             }
-            // if (!filter(id)) return
             return {
                 code: code,
                 map: {mappings: ''}
