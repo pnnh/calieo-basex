@@ -1,4 +1,4 @@
-import {html} from "@/components/style";
+import {renderCBHome} from "@/components/common/home";
 
 export class CBHomeElement extends HTMLElement {
     #shadowRoot: ShadowRoot;
@@ -11,12 +11,7 @@ export class CBHomeElement extends HTMLElement {
     connectedCallback() {
         const shadow2 = this.#shadowRoot;
 
-        const htmlText = html`
-            <div>From Client</div>
-            <calieo-input name="xxx" value="哈哈"></calieo-input>
-            <calieo-button name="yyy">Client Button</calieo-button>
-        `
-        shadow2.innerHTML = htmlText
+        shadow2.innerHTML = renderCBHome()
     }
 }
 

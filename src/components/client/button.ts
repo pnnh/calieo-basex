@@ -1,4 +1,4 @@
-import {getComponentValue, IMail, IMailbox, registerComponent} from "@/components/client/postoffice";
+import {getComponentValue, IMail, IMailbox, registerComponent, setComponentValue} from "@/components/client/postoffice";
 
 export class CBButtonElement extends HTMLElement implements IMailbox {
     #shadowRoot: ShadowRoot;
@@ -13,7 +13,7 @@ export class CBButtonElement extends HTMLElement implements IMailbox {
         }
     }
 
-    readSync(mail: IMail): unknown {
+    sendSync(mail: IMail): unknown {
         throw new Error("Method not implemented.");
     }
 
@@ -31,6 +31,7 @@ export class CBButtonElement extends HTMLElement implements IMailbox {
             console.log('click', this.#text)
             const inputValue = getComponentValue<string>('xxx')
             console.log('inputValue', inputValue)
+            setComponentValue('zzz', inputValue)
         }
         shadow2.appendChild(button)
     }

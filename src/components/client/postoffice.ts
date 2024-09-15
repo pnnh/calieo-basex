@@ -4,7 +4,7 @@ export interface IMail {
 }
 
 export interface IMailbox {
-    readSync(mail: IMail): unknown;
+    sendSync(mail: IMail): unknown;
 }
 
 const mailboxList: Map<string, IMailbox> = new Map();
@@ -20,6 +20,17 @@ export function getComponentValue<T>(name: string) {
             subject: 'getValue',
             content: ''
         }
-        return mailbox.readSync(mail) as T;
+        return mailbox.sendSync(mail) as T;
+    }
+}
+
+export function setComponentValue<T>(name: string, value: unknown) {
+    const mailbox = mailboxList.get(name);
+    if (mailbox) {
+        const mail: IMail = {
+            subject: 'setValue',
+            content: value as string
+        }
+        mailbox.sendSync(mail);
     }
 }

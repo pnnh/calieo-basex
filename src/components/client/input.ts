@@ -1,4 +1,3 @@
-import {html} from "@/components/style";
 import {IMail, IMailbox, registerComponent} from "@/components/client/postoffice";
 import {renderInput} from "@/components/common/input";
 
@@ -15,7 +14,7 @@ export class CBInputElement extends HTMLElement implements IMailbox {
         }
     }
 
-    readSync(mail: IMail): unknown {
+    sendSync(mail: IMail): unknown {
         if (mail.subject === 'getValue') {
             return this.#inputValue;
         }
