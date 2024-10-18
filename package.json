@@ -4,7 +4,8 @@
     "server": "NODE_ENV=development tsx main.ts",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "rollup": "rollup -c",
+    "watch": "rollup -c -w"
   },
   "version": "1.0.0",
   "private": "true",
@@ -12,12 +13,12 @@
     "@pnnh/atom": "file:../atom",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "express": "5.0.0",
     "express-http-proxy": "^2.1.1",
     "globals": "^15.8.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.8.0",
+    "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -29,11 +30,10 @@
     "@types/express-http-proxy": "^1.6.6",
     "@types/node": "^22.5.5",
     "@typescript-eslint/parser": "^8.3.0",
-    "eslint": "^9.8.0",
+    "tslib": "^2.8.0",
     "tsx": "^4.19.0",
     "typescript": "5.5.4",
-    "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.5",
+    "vite": "5.4.6",
     "vite-tsconfig-paths": "^5.0.1"
   }
 }

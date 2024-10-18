@@ -11,7 +11,7 @@ export function renderCBHome() {
     return html`
         <div class="${styles.homeContainer.className}">
             ${styleGroup.renderToTag()}
-            <div>From Client</div>
+            <div>From Client2</div>
             <calieo-input name="xxx" value="哈哈"></calieo-input>
             <calieo-button name="yyy">Client Button</calieo-button>
             <div>

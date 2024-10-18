@@ -42,7 +42,8 @@
     "plugins": []
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "build/index.mjs"
   ],
   "exclude": [
     "node_modules"

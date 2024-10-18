@@ -1,5 +1,6 @@
-import {getComponentValue, IMail, IMailbox, registerComponent, setComponentValue} from "@/components/client/postoffice";
+import {getComponentValue, registerComponent, setComponentValue} from "@/components/client/postoffice";
 import {encodeBase64String} from "@pnnh/atom";
+import {IMail, IMailbox} from "@/components/common/mailbox";
 
 export class CBButtonElement extends HTMLElement implements IMailbox {
     #shadowRoot: ShadowRoot;

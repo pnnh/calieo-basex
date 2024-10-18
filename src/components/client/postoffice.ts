@@ -1,11 +1,4 @@
-export interface IMail {
-    subject: string;
-    content: string;
-}
-
-export interface IMailbox {
-    sendSync(mail: IMail): unknown;
-}
+import {IMail, IMailbox} from "@/components/common/mailbox";
 
 const mailboxList: Map<string, IMailbox> = new Map();
 

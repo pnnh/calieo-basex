@@ -37,21 +37,45 @@ export class StyleGroup {
     }
 
     renderToString() {
-        let str = '';
+        let styles: StyleObject[] = [];
         this.styles.forEach((style) => {
-            Object.keys(style).forEach((key) => {
-                str += `.${style[key].className} {${style[key].styleText}}\n`
-            })
-        })
-        return str;
+            styles = styles.concat(Object.values(style));
+        });
+        return renderStylesToString(styles);
     }
 
     renderToTag() {
-        const rawStyle = this.renderToString();
-        const outputStyle = rawStyle.replace(/\n/g, '').replace(/\s+/g, ' ');
-        return html`
-            <style>${outputStyle}</style>`
+        let styles: StyleObject[] = [];
+        this.styles.forEach((style) => {
+            styles = styles.concat(Object.values(style));
+        });
+        return renderStylesToTag(...styles);
     }
+}
+
+
+export function renderStylesToString(styles: StyleObject[] = []) {
+    let str = '';
+    styles.forEach((style) => {
+        str += `.${style.className} {${style.styleText}}\n`
+    })
+    return str;
+}
+
+export function renderStyleGroupToTag(styles: { [key: string]: StyleObject }) {
+    for (const key in styles) {
+        const styleText = styles[key].styleText;
+        const suffix = stringToMd5(styleText).slice(0, 8);
+        styles[key].setClassName = `ca-${key}-${suffix}`;
+    }
+    return renderStylesToTag(...Object.values(styles));
+}
+
+export function renderStylesToTag(...styles: StyleObject[]) {
+    const rawStyle = renderStylesToString(styles);
+    const outputStyle = rawStyle.replace(/\n/g, '');
+    return html`
+        <style>${outputStyle}</style>`
 }
 
 export function html(text: TemplateStringsArray, ...values: any[]) {
